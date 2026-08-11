@@ -1,28 +1,30 @@
-# Forge Co-Pilot
+# forge-copilot
 
-Bridge between human and Forge agents.
+Protocol, handoff, and visibility layer for multi-model work on The Forge.
 
-## How to use with any coder / aider / free model
+This repo does **not** contain the living fabric code. That lives in `the-forge`.
 
-Always start the session with:
+## Purpose
+- Give every model a hard, consistent entry point so they stop drifting and burning tokens.
+- Force STATUS-first behavior.
+- Enforce the AI NODE COMMIT LOG format.
+- Hold clean handoff state so sessions can resume instead of restarting.
 
-```
-You are working on Forge OS / Sovereign Forge.
-Read these repos first:
-- https://github.com/munnchue-gif/forge-os-core
-- https://github.com/munnchue-gif/forge-arena
-- https://github.com/munnchue-gif/sovereign-forge-v4
+## How a model enters
+1. Read `the-forge/START_HERE.md`
+2. Read current STATUS
+3. Absorb `protocol/PRE_PROMPT.md` + `protocol/MASTER_PROMPT.md`
+4. Work only inside the AI NODE COMMIT LOG format
+5. End with validation commands and an updated handoff if needed
 
-NPU is FIXED (OpenVINO 2026.3.0 + held libze1). Do not reinstall drivers.
-Stick to the completed 2026-08-08 path. Do not mix Base44-coupled psychology.
+## Key files
+| Path | Role |
+|------|------|
+| protocol/PRE_PROMPT.md | Hard entry rules |
+| protocol/MASTER_PROMPT.md | Architecture role + commit log format |
+| handoff/ | STATE / NEXT / RESUME for session continuity |
+| node-logs/ | Append-only record of substantive model work |
+| bridge-patch/ | Historical notes (bridge boot is now fixed in the-forge) |
 
-Current goal: [state your goal]
-```
-
-## Repos
-| Repo | Purpose |
-|------|--------|
-| forge-os-core | Production Overseer + Security + NPU |
-| forge-arena | Critique / tournament / gallery |
-| sovereign-forge-v4 | Adaptive SvelteKit + Bus + Keychain |
-| forge-copilot | This guide + recovery |
+## Rule
+If the protocol and the live code disagree, the live code in `the-forge` + the current STATUS win. Update the protocol to match reality; do not invent a parallel architecture.
