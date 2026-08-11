@@ -1,15 +1,17 @@
 # FORGE — STATUS (model visibility)
-**Updated:** 2026-08-11
+**Updated:** 2026-08-11 (post-cleanup)
 
-Canonical detail: **forge-os-core** `STATUS.md`. Session continuity: **handoff/** in this repo.
+Canonical detail: **forge-os-core** `STATUS.md`.  
+Entry for every session: **the-forge/START_HERE.md**
 
 ## Now
-- PC: `~/the-forge` (+ snapshot `~/forge-os-locked-pc`)
-- NPU: visible (`CPU`, `GPU.0`, `GPU.1`, `NPU`)
+- PC: `~/the-forge`
+- Source of truth: `munnchue-gif/the-forge`
+- Bridge: **FIXED** — uses `boot_forge()`. `/health` must show `booted: true`
 - Tests: **62 passed** simple fabric baseline
-- Finding live: `id, organ, severity:str, title, detail` (`fabric.types.Finding`)
-- Bridge: code present; GitHub `server.py` still risks `ForgeKernel()` missing secret — see `bridge-patch/BOOT_FIX.md`
+- Finding: live shape in `fabric/types.py` + `make_finding` helper
 - Base44: glass only — not the spine
+- Protocol: hardened anti-drift PRE_PROMPT + MASTER_PROMPT
 
 ## Handoff (use these)
 | File | Purpose |
@@ -17,13 +19,13 @@ Canonical detail: **forge-os-core** `STATUS.md`. Session continuity: **handoff/*
 | `handoff/STATE.md` | Living snapshot |
 | `handoff/NEXT.md` | Ordered steps |
 | `handoff/RESUME_PROMPT.md` | Paste into any new model chat |
-| `bridge-patch/BOOT_FIX.md` | Bridge boot fix |
-| `versions/MODELS_AND_VERSIONS.md` | Psychology wall |
+| `protocol/` | Hard entry rules + commit log format |
 
 ## Do not
 - Treat Base44 as the spine
-- Restore hash-chained internal ledger without product decision
+- Call `ForgeKernel()` bare (use `boot_forge()`)
 - Invent a second Finding type
+- Start over when the architecture already exists
 
 ## Baseline command
 ```bash
