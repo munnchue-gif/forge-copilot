@@ -2,24 +2,20 @@
 
 ## 1. RECENT COMPLETED WORK
 - finding-unify CLOSED (producers clean).
-- overseer.py feed-log + sandbox.py is_clean fixed (production consumers clean).
-- test_judge.py modernized.
-- New block opened: `2026-08-12-test-finding-refresh`.
+- overseer.py feed-log + sandbox.py is_clean fixed.
+- test_judge.py, test_sandbox.py, test_conduit.py, test_overseer.py modernized to live Finding shape.
 
 ## 2. CURRENT ACTIVE BLOCK
-- **Active Block:** `coder-context/blocks/2026-08-12-test-finding-refresh/`
-- **Objective:** Modernize remaining Finding-related tests (test_sandbox, test_conduit, test_overseer, others still on dead shape).
+- None. Primary Finding migration complete across production + critical tests.
 
 ## 3. IMMEDIATE NEXT STEP FOR NEW MODEL
-- Open only that block.
-- Refresh the three named test files first; only touch others if grep still shows dead Finding usage.
-- Do not touch production modules.
+- Optional: light sweep of any remaining test_*.py that still import Finding from overseer (test_tailor uses a local duck type — fine).
+- Resume locked priority: mint / request_action path.
 
 ## 4. KNOWN TRAPS / WARNINGS
 - Local PC branch is `master`.
-- Capability `.kind` and ledger `"kind"` keys are not Finding fields — leave them alone.
-- Live severity is str.
+- Live severity is str (`info` / `warn` / `error` / `critical`).
 
 ---
 
-**Next command:** `BLOCK_OPEN coder-context/blocks/2026-08-12-test-finding-refresh/`
+**Finding shape is now consistent** in production modules and the primary design-suite tests.
