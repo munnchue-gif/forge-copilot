@@ -1,24 +1,25 @@
 # FORGE COPILOT :: HANDOFF STATE
 
 ## 1. RECENT COMPLETED WORK
-- finding-unify block CLOSED (judge, ollama_capsule, openvino_seat, conduit).
-- overseer.py feed-log migrated to live Finding fields (id, organ, title, detail, severity).
-- sandbox.py Concoction.is_clean now ranks live string severity (no more str < int).
-- test_judge.py already modernized.
+- finding-unify CLOSED (producers clean).
+- overseer.py feed-log + sandbox.py is_clean fixed (production consumers clean).
+- test_judge.py modernized.
+- New block opened: `2026-08-12-test-finding-refresh`.
 
 ## 2. CURRENT ACTIVE BLOCK
-- None. Production Finding consumers are consistent.
+- **Active Block:** `coder-context/blocks/2026-08-12-test-finding-refresh/`
+- **Objective:** Modernize remaining Finding-related tests (test_sandbox, test_conduit, test_overseer, others still on dead shape).
 
 ## 3. IMMEDIATE NEXT STEP FOR NEW MODEL
-- Optional: refresh remaining test files that still use dead Finding shape
-  (test_conduit.py, test_overseer.py, test_sandbox.py, others).
-- Or resume mint / request_action path (still the locked priority).
+- Open only that block.
+- Refresh the three named test files first; only touch others if grep still shows dead Finding usage.
+- Do not touch production modules.
 
 ## 4. KNOWN TRAPS / WARNINGS
-- Local PC branch is `master` (not `main`).
-- Several design-suite tests still legacy — they are ignored by the 62-test baseline.
-- Live severity is str (`info` / `warn` / `error` / `critical`).
+- Local PC branch is `master`.
+- Capability `.kind` and ledger `"kind"` keys are not Finding fields — leave them alone.
+- Live severity is str.
 
 ---
 
-**Production Finding shape is now consistent** across producers and the two critical consumers (overseer feed-log + sandbox is_clean).
+**Next command:** `BLOCK_OPEN coder-context/blocks/2026-08-12-test-finding-refresh/`
